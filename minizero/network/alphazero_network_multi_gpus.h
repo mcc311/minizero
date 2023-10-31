@@ -75,8 +75,8 @@ public:
             std::execution::par_unseq,
             std::begin(networks_),
             std::end(networks_),
-            [&forward_results, &inputs](torch::jit::script::Module& network) {
-                forward_results.emplace_back(network.forward(inputs[std::distance(std::begin(networks_), &network)]));
+            [&forward_results, &inputs](torch::jit::script::Module& net) {
+                forward_results.emplace_back(network.forward(inputs[std::distance(std::begin(networks_), &net)]));
             }
         );
         std::vector<torch::Tensor> policy_outputs;
