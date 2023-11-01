@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <utility>
 #include <torch/script.h>
 #include <vector>
 
@@ -34,6 +35,8 @@ public:
     inline std::string getGameName() const { return game_name_; }
     inline std::string getNetworkTypeName() const { return network_type_name_; }
     inline std::string getNetworkFileName() const { return network_file_name_; }
+    // forward
+    torch::jit::IValue forward(torch::jit::IValue input) { return network_.forward({input}); }
 
 protected:
     inline torch::Device getDevice() const { return (gpu_id_ == -1 ? torch::Device("cpu") : torch::Device(torch::kCUDA, gpu_id_)); }

@@ -5,6 +5,11 @@ __pycache__
 # configuration file
 *.cfg
 
+# weight file
+*.pt
+*.pth
+*.pkl
+
 # training folder
 *_az_*/
 *_gaz_*/
